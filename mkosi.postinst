@@ -7,3 +7,4 @@ rm -f "$BUILDROOT/usr/lib/tmpfiles.d/openssh.conf"
 
 mkdir "$BUILDROOT/usr/lib/pacman"
 mv "$BUILDROOT/var/lib/pacman/local" "$BUILDROOT/usr/lib/pacman"
+
