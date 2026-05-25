@@ -1,0 +1,245 @@
+// -*- mode: jsonc -*-
+[{
+    "layer": "top", // Waybar at top layer
+    "position": "left", // Waybar position (top|bottom|left|right)
+    // "height": 24,  Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "niri/workspaces",
+    ],
+    "modules-center": [
+        "clock",
+        "mpris"
+    ],
+    "modules-right": [
+        "power-profiles-daemon",
+        "idle_inhibitor",
+        "wireplumber",
+        "backlight",
+        "battery",
+        "tray"
+    ],
+    // Modules configuration
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+           	"default": "",
+        }
+    },
+    "sway/workspaces": {
+        // "window-rewrite-default": "",
+        // "window-format": "{name}",
+        // "window-rewrite": {
+        //    "dev.deedles.trayscale": "󱗼",
+        //    "firefox": "",
+        //    "godot": "",
+        //    "discord": "󰙯",
+        //    "vesktop": "󰙯",
+        //    "foot": "",
+        //    "org.wezfurlong.wezterm": "",
+        //    "com.mitchellh.ghostty": "",
+        //    "kitty": "",
+        //    "brave-browser": "",
+        //    "pragtical": "",
+        //    "dev.alextren.spot": "",
+        //    "com.github.neithern.g4music": "󰝚",
+        //    "thunar": "󰪶",
+        //    "mpv": "󰈫",
+        //    "imv": "",
+        //    "com.obsproject.studio": "󰑋",
+        //    "obsidian": "󱓧",
+        //    "mullvad vpn": "󰒄",
+        //    "signal": "󰆉",
+        //    "librewolf": "󰈹",
+        //    "firefox": "󰈹",
+        //    "zen": "󰈹",
+        //    "de.haeckerfelix.fragments": "󱑣",
+        //    "steamwebhelper": "󰓓",
+        //    "dolphin-emu": "󱢴",
+        //    "yuzu": "󰟡",
+        //    "info.cemu.cemu": "󰜭",
+        //    "otpclient": "󰥿",
+        //    "com.github.tchx84.flatseal": "",
+        //    "com.github.gradienceteam.gradience.devel": "",
+        //    "io.github.flattool.warehouse": "",
+        //    "io.missioncenter.missioncenter": "󰨇",
+        //    "gnome-boxes": "󰹑",
+        //    "blender": "󰂫",
+        //    "com.usebottles.bottles": "󰡶",
+        //    "org.gnome.world.pikabackup": "󰁯",
+        //    "org.gnome.clocks": "",
+        //    "com.gar.todo": "",
+        //    "com.gar.floatterm": "",
+        //    "com.gar.wallpaper": "󰥷",
+        //  },
+        "persistent-workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+            "5": [],
+            "6": [],
+            "7": [],
+            "8": [],
+            "9": [],
+            "10": [],
+        },
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "󰝚",
+            "6": "󰹑",
+            "7": "󰓓",
+            "8": "8",
+            "9": "9",
+            "10": "10",
+            // "urgent": "",
+            // "focused": "",
+            "default": "",
+        },
+        "all-outputs": true,
+        "format": "{icon}",
+    },
+    "sway/window": {
+        "format": "{title}",
+        "max-length": 40,
+        "all-outputs": true
+    },
+    "sway/language": {
+        "format": "{short}",
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+    },
+    "mpris": {
+       	"format": "{player_icon}",
+        "player-icons": {
+           "default": "▶",
+           "mpv": "",
+           "g4music": "󱝟",
+           "firefox": "" 
+        },
+       	// "ignored-players": ["firefox"]
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "sway/mode": {
+        "format": "{}"
+    },
+    "sway/scratchpad": {
+        "format": "{icon}\n{count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
+    },
+    "load": {
+        "format": " {}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        "format": "{icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "tooltip-format": "{percent}%",
+        "tooltip": true,
+    },
+    "battery": {
+        "states": {
+            "full": 100,
+            "good": 95,
+            "mid": 80,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon}",
+        "format-full": "󱟢",
+        // "format-charging": "",
+        // "format-plugged": "",
+        "tooltip-format": "{capacity}%, {time}",
+        "tooltip": true,
+        // "format-alt": "{icon} {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁿", "󰂀", "󰂁", "󰂂"]
+    },
+    "wireplumber": {
+        "scroll-step": 5, // %, can be a float
+        "format": "{icon}",
+        "format-bluetooth": "{icon} ",
+        "format-bluetooth-muted": "󰝟 ",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "tooltip-format": "{volume}%",
+        "tooltip": true,
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "vertical"
+    },
+    "clock": {
+      // "format": "{:%R}  ",
+      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "format": "{:%H\n%M}",
+      "calendar": {
+        "mode": "year",
+        "mode-mon-col": 3,
+        "weeks-pos": "right",
+        "on-scroll": 1,
+        "on-click-right": "mode",
+        "format": {
+          "months": "<span color='#3ddbd9'><b>{}</b></span>",
+          "days": "<span color='#f2f4f8'><b>{}</b></span>",
+          "weeks": "<span color='#25be6a'><b>W{}</b></span>",
+          "weekdays": "<span color='#08bdba'><b>{}</b></span>",
+          "today": "<span color='#ee5396'><b><u>{}</u></b></span>"
+        }
+      },
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    }
+}]

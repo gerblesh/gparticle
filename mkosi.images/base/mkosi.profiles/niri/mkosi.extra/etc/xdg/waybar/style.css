@@ -1,0 +1,277 @@
+@define-color bg0 #000000;
+/*@define-color bg0 #161616;*/
+/* @define-color bg #2a2a2a; */
+@define-color bg #161616;
+@define-color fg #f2f4f8;
+@define-color sel #484848;
+@define-color urg #ee5396;
+@define-color accent #08bdba;
+@define-color accent0 #33b1ff;
+@define-color red #ee5396;
+@define-color green #25be6a;
+@define-color blue #78a9ff;
+@define-color magenta #be95ff;
+@define-color bg1 #2a2a2a;
+
+.month {
+    color: @green;
+}
+
+.day {
+    color: @fg;
+}
+
+
+* {
+    font-size: 20px;
+    font-family: SF Mono;
+    border-radius: 0;
+}
+
+tooltip {
+    border-radius: 0;
+    background-color: @bg;
+    border: 0;
+}
+
+tooltip label {
+    color: @fg;
+}
+
+window#waybar {
+    padding: 0;
+    border-radius: 0;
+    background-color: @bg0;
+    border-bottom: 0;
+    color: @fg;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+
+.modules-right {
+    margin: 10px 0 0 0;
+}
+.modules-center {
+    margin: 10px 0 0 0;
+}
+.modules-left {
+    margin: 10px 0 0 0;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    /* box-shadow: inset 3px 0 transparent; */
+    border: none;
+    margin: 0 0;
+    padding: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+
+button:hover {
+    background: inherit;
+    border: none;
+    text-shadow: inherit;
+    /* box-shadow: inset 3px 0 @fg; */
+}
+
+#workspaces button {
+    padding: 2px 5px;
+    margin: 2px 0px;
+    color: @sel;
+    /* box-shadow: inset 3px 0 @bg1; */
+    border-radius: 0;
+}
+
+
+#workspaces button.current_output {
+    color: @bg1;
+    /* box-shadow: inset 3px 0 @accent; */
+}
+
+/* #workspaces button.visible { */
+    /* background-color: @sel; */
+/* } */
+
+#workspaces button.focused {
+    /* background-color: @accent; */
+    color: @accent;
+}
+
+
+#workspaces button.urgent {
+    background-color: @urg;
+    color: @bg0;
+    box-shadow: none;
+}
+
+#power-profiles-daemon,
+#language,
+#idle_inhibitor,
+#cava,
+#scratchpad,
+#mode,
+#window,
+#clock,
+#battery,
+#backlight,
+#wireplumber,
+#tray,
+#mpris,
+#load {
+    margin-top: 0;
+    padding: 10px 5px;
+    background-color: @bg;
+    color: @fg;
+}
+
+#mode {
+    background-color: @accent;
+    color: @bg;
+    /* box-shadow: inse3px 0 -3px #ffffff; */
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#battery.good {
+    box-shadow: inset 3px 0 @green;
+}
+
+#battery.mid {
+    box-shadow: inset 3px 0 @fg;
+}
+
+#battery.warning {
+    box-shadow: inset 3px 0 @urg;
+}
+
+#battery.critical {
+    box-shadow: inset 3px 0 @red;
+}
+
+#battery.charging, #battery.plugged, #battery.full {
+    background-color: @green;
+    color: @bg;
+    box-shadow: none;
+}
+
+@keyframes blink {
+    to {
+        background-color: @bg;
+        color: @fg;
+    }
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: @red;
+    color: @fg;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+#mpris.playing {
+    background-color: @accent0;
+    color: @bg;
+}
+
+
+#idle_inhibitor {
+    box-shadow: inset 3px 0 @urg;
+}
+
+#idle_inhibitor.activated {
+    color: @bg;
+    background-color: @urg;
+}
+
+#wireplumber {
+    box-shadow: inset 3px 0 @blue;
+}
+
+#wireplumber.muted {
+    background-color: @blue;
+    color: @bg;
+}
+
+#backlight {
+    box-shadow: inset 3px 0 @magenta;
+}
+
+#power-profiles-daemon.power-saver {
+    box-shadow: inset 3px 0 @red;
+}
+
+#power-profiles-daemon.balanced {
+    box-shadow: inset 3px 0 @green;
+}
+
+#power-profiles-daemon.performance {
+    box-shadow: inset 3px 0 @blue;
+}
+
+#tray menu {
+    font-family: sans-serif;
+}
+
+#scratchpad {
+    box-shadow: inset 3px 0 @magenta;
+}
+
+#pulseaudio-slider slider {
+    min-height: 0;
+    min-width: 0;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    margin: 0;
+}
+
+#pulseaudio-slider trough {
+    min-height: 1.5em;
+    margin: 0;
+    min-width: 1em;
+    border-radius: 0;
+    background-color: @bg;
+}
+
+#pulseaudio-slider highlight {
+    min-width: 10px;
+    border-radius: 0;
+    background-color: green;
+}
