@@ -1,0 +1,7 @@
+# needssslcertforbuild
+# vi:ft=systemd
+
+[Include]
+Include=mkosi-obs
+        gparticle/mkosi.conf
+
