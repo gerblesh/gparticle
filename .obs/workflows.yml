@@ -8,3 +8,4 @@ rebuild:
     branches:
       only:
         - main
+        - obs
